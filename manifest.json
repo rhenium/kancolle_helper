@@ -20,9 +20,7 @@
         }
     ],
     "devtools_page": "devtools.xhtml",
-    "permissions": [
-        "webRequest"
-    ],
+    "permissions": [],
     "web_accessible_resources": [
         "content_script.css",
         "jquery.ui.core.css",
