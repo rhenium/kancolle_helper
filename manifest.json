@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "name": "KanColle Helper",
+    "version": "1",
+    "description": "KanColle Helper",
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"
+            ],
+            "css": [],
+            "js": [
+                "jquery-2.0.3.min.js",
+                "jquery-ui.min.js",
+                "content_script.js"
+            ]
+        }
+    ],
+    "devtools_page": "devtools.xhtml",
+    "permissions": [
+        "webRequest"
+    ],
+    "web_accessible_resources": [
+        "content_script.css",
+        "jquery.ui.core.css",
+        "jquery.ui.tabs.css"
+    ]
+}
+

@@ -1,0 +1,86 @@
+#game_frame {
+    width: 800px;
+    height: 500px !important;
+}
+
+#kch {
+    margin: auto;
+    padding: 0;
+    width: 800px;
+    text-align: left;
+    background-color: #cccccc;
+}
+
+.kch_deck table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.kch_deck tr {
+    height: 3em;
+}
+
+.kch_deck .damage-zero {
+}
+
+.kch_deck .damage-small {
+    background-color: cornsilk;
+}
+
+.kch_deck .damage-medium {
+    background-color: darksalmon;
+}
+
+.kch_deck .damage-large {
+    background-color: darkred;
+    color: #ccc;
+}
+
+.kch_deck td {
+    padding: 0 2px;
+    font-size: x-small;
+}
+
+.kch_deck .type {
+    width: 100px;
+    text-align: right;
+}
+
+.kch_deck .name {
+    width: 150px;
+    font-size: large;
+}
+
+.kch_deck .lv {
+    width: 50px;
+    font-size: large;
+}
+
+.kch_deck .lv:before {
+    content: "Lv. ";
+    font-size: x-small;
+}
+
+.kch_deck .hp {
+    width: 75px;
+    font-size: large;
+}
+
+.kch_deck .hp:before {
+    content: "HP: ";
+    font-size: x-small;
+}
+
+.kch_deck .cond {
+    width: 75px;
+    font-size: large;
+}
+
+.kch_deck .cond:before {
+    content: "cond: ";
+    font-size: x-small;
+}
+
+.kch_deck .slots {
+}
+
