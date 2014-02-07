@@ -2,8 +2,6 @@ var prev_my_ships = {};
 var ships = null;
 var stypes = null;
 (function() {
-    var _sl = localStorage["my_ships"];
-    if (_sl) { prev_my_ships = JSON.parse(_sl); }
     var _sm = localStorage["ships"];
     if (_sm) { ships = JSON.parse(_sm); }
     var _ss = localStorage["stypes"];
@@ -52,17 +50,18 @@ chrome.devtools.network.onRequestFinished.addListener(function(request) {
 
             var my_ships = {};
             my_ships_data.forEach(function(ship) {
-                var pr = prev_my_ships[ship.api_id.toString()];
+                var prev = prev_my_ships[ship.api_id.toString()] || {};
                 my_ships[ship.api_id.toString()] = {
                     "cond": ship.api_cond,
-                    "prev_cond": (pr ? pr.cond : -1),
+                    "prev_cond": prev.cond,
                     "lv": ship.api_lv,
+                    "next_exp": ship.api_exp[1], // api_exp: [total_exp, for_next, next_level]
                     "hp": [ship.api_nowhp, ship.api_maxhp],
                     "name": ships[ship.api_ship_id.toString()].name,
                     "type": stypes[ships[ship.api_ship_id.toString()].stype_id.toString()],
                 };
             });
-            localStorage["my_ships"] = JSON.stringify(my_ships);
+            prev_my_ships = JSON.stringify(my_ships);
 
             var data = {
                 "decks": my_decks_data.map(function(deck) { return {
