@@ -8,58 +8,41 @@
     padding: 0;
     width: 800px;
     text-align: left;
-    background-color: #cccccc;
+    background-color: #eeeeee;
 }
 
-.kch_deck table {
-    width: 100%;
-    border-spacing: 0;
+.kch_deck ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.kch_deck tr {
-    height: 3em;
+.kch_deck li {
+    display: flex;
+    height: 27px;
+    border-bottom: 1px solid #999999;
 }
 
-.kch_deck .damage-zero {
+.kch_deck li:last-child {
+    border-bottom: 0;
 }
 
-.kch_deck .damage-small {
-    background-color: cornsilk;
-}
+.kch_deck li.damage-zero { }
+.kch_deck li.damage-small { background-color: cornsilk; }
+.kch_deck li.damage-medium { background-color: darksalmon; }
+.kch_deck li.damage-large { background-color: darkred; color: #cccccc; }
 
-.kch_deck .damage-medium {
-    background-color: darksalmon;
-}
-
-.kch_deck .damage-large {
-    background-color: darkred;
-    color: #ccc;
-}
-
-.kch_deck td {
-    padding: 0 2px;
+.kch_deck li > div {
+    margin: 0 2px;
     font-size: x-small;
 }
 
-.kch_deck .type {
-    width: 70px;
-    text-align: right;
-}
-
-.kch_deck .name {
-    width: 150px;
-    font-size: large;
-}
-
-.kch_deck .lv { width: 80px; font-size: large; }
-.kch_deck .lv:before { content: "lv:"; font-size: x-small; }
-.kch_deck .lv:after  { content: "(" attr(data-next-exp) ")"; font-size: x-small; }
-
-.kch_deck .hp { width: 75px; font-size: large; }
-.kch_deck .hp:before { content: "hp:"; font-size: x-small; }
-
-.kch_deck .cond { width: 75px; font-size: large; }
-.kch_deck .cond:before { content: "cond:"; font-size: x-small; }
-
+.kch_deck .lv { width: 50px; font-size: large; text-align: right; }
+.kch_deck .name { width: 150px; font-size: large; }
+.kch_deck .hp { width: 65px; font-size: large; text-align: right; }
+.kch_deck .hp:after { content: "/" attr(data-max-hp); color: #666666; font-size: small; }
+.kch_deck li.damage-large .hp:after { color: #999999; }
+.kch_deck .cond:before { content: "cond:"; font-size: xx-small; }
+.kch_deck .cond { width: 55px; font-size: large; text-align: right; }
 .kch_deck .slots { }
 

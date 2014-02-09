@@ -1,9 +1,6 @@
 var addCss = function(url) {
     $("head").append(
-        $("<link />")
-            .attr("rel", "stylesheet")
-            .attr("type", "text/css")
-            .attr("href", url)
+        $("<link />").attr("rel", "stylesheet").attr("type", "text/css").attr("href", url)
     );
 };
 
@@ -30,7 +27,7 @@ var setup = function() {
         console.log(data);
         data.decks.forEach(function(deck, i) {
             $("#deck-tab-" + i).text(deck.name);
-            var table = $("<table />").appendTo($("#deck-" + i).empty());
+            var table = $("<ul />").appendTo($("#deck-" + i).empty());
 
             deck.ships.forEach(function(ship, i) {
                 if (ship) {
@@ -39,17 +36,15 @@ var setup = function() {
                              hs <= 0.50 ? "medium" : 
                              hs <= 0.75 ? "small" : "zero";
                     table.append(
-                        $("<tr />").addClass("damage-" + cl)
-                            .append($("<td />").addClass("type").text(ship.type))
-                            .append($("<td />").addClass("name").text(ship.name))
-                            .append($("<td />").addClass("lv").text(ship.lv).attr("data-next-exp", ship.next_exp))
-                            .append($("<td />").addClass("hp").text(ship.hp.join("/")))
-                            .append($("<td />").addClass("cond").text(ship.cond))
-                            // .append($("<td />").addClass("prev_cond").text(ship.prev_cond))
-                            .append($("<td />").addClass("slots"))
+                        $("<li />").addClass("damage-" + cl)
+                            .append($("<div />").addClass("lv").text(ship.lv).attr("title", ship.next_exp))
+                            .append($("<div />").addClass("name").text(ship.name).attr("data-ship-type", ship.type))
+                            .append($("<div />").addClass("hp").text(ship.hp[0]).attr("data-max-hp", ship.hp[1]))
+                            .append($("<div />").addClass("cond").text(ship.cond))
+                            .append($("<div />").addClass("slots"))
                         );
                 } else {
-                    table.append($("<tr />").addClass("damage-zero"));
+                    table.append($("<li />").addClass("damage-zero"));
                 }
             });
         });
