@@ -41,7 +41,13 @@ var setup = function() {
                             .append($("<div />").addClass("name").text(ship.name).attr("data-ship-type", ship.type))
                             .append($("<div />").addClass("hp").text(ship.hp[0]).attr("data-max-hp", ship.hp[1]))
                             .append($("<div />").addClass("cond").text(ship.cond))
-                            .append($("<div />").addClass("slots"))
+                            .append($("<div />").addClass("slots")
+                                .append($("<div />").addClass("slotitem").text(ship.slotitems[0] || "").attr("title", ship.slotitems[0] || ""))
+                                .append($("<div />").addClass("slotitem").text(ship.slotitems[1] || "").attr("title", ship.slotitems[1] || ""))
+                                .append($("<div />").addClass("slotitem").text(ship.slotitems[2] || "").attr("title", ship.slotitems[2] || ""))
+                                .append($("<div />").addClass("slotitem").text(ship.slotitems[3] || "").attr("title", ship.slotitems[3] || ""))
+                                // .append($("<div />").addClass("slotitem").text(ship.slotitems[4] || "").attr("title", ship.slotitems[4] || ""))
+                            )
                         );
                 } else {
                     table.append($("<li />").addClass("damage-zero"));

@@ -35,6 +35,7 @@
 .kch_deck li > div {
     margin: 0 2px;
     font-size: x-small;
+    flex: none;
 }
 
 .kch_deck .lv { width: 50px; font-size: large; text-align: right; }
@@ -43,6 +44,7 @@
 .kch_deck .hp:after { content: "/" attr(data-max-hp); color: #666666; font-size: small; }
 .kch_deck li.damage-large .hp:after { color: #999999; }
 .kch_deck .cond:before { content: "cond:"; font-size: xx-small; }
-.kch_deck .cond { width: 55px; font-size: large; text-align: right; }
-.kch_deck .slots { }
+.kch_deck .cond { width: 55px; font-size: large; }
+.kch_deck .slots { padding-left: 6px; display: flex; flex: auto; }
+.kch_deck .slots .slotitem { font-size: large; width: 100%; overflow: hidden; padding-left: 4px; }
 
