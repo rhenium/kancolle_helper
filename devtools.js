@@ -4,6 +4,12 @@ var send_data = function() {
     });
 };
 
+var send_error = function(e) {
+    chrome.extension.sendRequest({
+        error: e.toString(),
+    });
+};
+
 var master = {
     stypes: JSON.parse(localStorage["master.stypes"] || "{}"),
     ships: JSON.parse(localStorage["master.ships"] || "{}"),
@@ -23,7 +29,7 @@ var mydata = {
         });
     },
     update_ships: function(ships) {
-        if (ships.length != 1) mydata.ships = {};
+        if (mydata.ships.length - ships.length <= 1) mydata.ships = {};
 
         ships.forEach(function(ship) {
             mydata.ships[ship.api_id] = {
@@ -32,7 +38,7 @@ var mydata = {
                 next_exp: ship.api_exp[1], // api_exp: [total_exp, for_next, next_level]
                 hp: [ship.api_nowhp, ship.api_maxhp],
                 slotitems: ship.api_slot.filter(function(id) { return id >= 0; }).map(function(id) {
-                    return mydata.slotitems[id].name; }),
+                    return (mydata.slotitems[id] || { name: "undefined" }).name; }),
                 name: master.ships[ship.api_ship_id].name,
                 type: master.stypes[master.ships[ship.api_ship_id].stype_id],
             };
@@ -118,7 +124,11 @@ chrome.devtools.network.onRequestFinished.addListener(function(request) {
         if (fm.match.test(request.request.url)) {
             request.getContent(function(content) {
                 var json = JSON.parse(content.replace(/^svdata=/, ""));
-                fm.callback(json, request);
+                try {
+                    fm.callback(json, request);
+                } catch (e) {
+                    send_error(e);
+                }
             });
         }
     });
