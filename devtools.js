@@ -102,8 +102,8 @@ var fms = [
     {
         match: /kcsapi\/api_get_member\/ship2$/,
         callback: function(json, request) {
-            mydata.update_ships(json.api_data.api_data);
-            mydata.update_decks(json.api_data.api_data_deck);
+            mydata.update_ships(json.api_data);
+            mydata.update_decks(json.api_data_deck);
 
             send_data();
         }
